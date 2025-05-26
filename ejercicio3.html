@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Sistema de Ahorro de Agua</title>
+</head>
+<body>
+
+    <script>
+
+let limite = 0 // iniciamos la varible que cuenta los limites
+let libros = 0 // iniciamos la varible que cuenta el maximo de libros 
+
+while (true) { // iniciamos el ciclo while
+  let tipo = prompt("Tipo de usuario (estudiante, docente, visitante) o salir:") // preguntamos al usuario 
+  if (tipo === "salir" || tipo == null) // si el usuario no desea continuar
+    break // detetiene el codigo
+
+  switch (tipo) { // iniciamos el ciclo de casos 
+    case "estudiante": // primer Caso estudiante
+      limite = 3 // Limite de libros a rentar
+      break // si se cumple pasa a la siguiente condicion
+    case "docente": // segundo Caso
+      limite = 5 // limite de libros a rentar
+      break // si se cumple pasa a la siguiente condicion
+    case "visitante": // tercer Caso 
+      limite = 1 // limite de libros 
+      break //si se cumple pasa a la siguiente condicion
+    default: // si no se cumple ninguno de los casos anteriores
+      alert("Tipo no válido.") // muestra una alerta 
+      continue // vuelve al principio del codigo
+  }
+
+  do { // iniciamos mientras que 
+    libros = parseInt(prompt("¿Cuántos libros desea prestar? maximo libros permitidos: " + limite)) // Pregunta Cuantos Libros Va A Rentar Y La Pasa A Entero
+    if (libros > limite || libros <= 0 || isNaN(libros)) { // verifica que el valor ingresado sea numero y que sea valido
+      alert("Cantidad no permitida. Máximo permitido: " + limite) // muestra alerta si el valor no cumple cona la condicion anterior 
+    }
+  } while (libros > limite || libros <= 0 || isNaN(libros)) // mientras que una de las condicones secumpla
+
+  alert("Préstamo registrado para " + tipo + " con " + libros + " libro(s).") // mostrar la siguiente alerta 
+
+   console.log("Usuario: " + tipo + "  Libros rentados: " + libros)
+}
+
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Monitoreo de ahorro de agua</h1>    
+    <script>
+let advertencias = 0 // iniciamos la variable que cuenta las advertencias
+let maxAdvertencias = 3 // iniciamos la variable que cuenta las maximas avertencias
+let totalDuchas = 0 // iniciamos la varible que cuenta el total de las duchas
+let tiempoTotal = 0 // iniciamos la varible que suma el tiempo de duchas
+
+do { //  // Bucle que se repetirá mientras las advertencias sean menores al máximo
+ let entrada = prompt("Ingrese el tiempo de la ducha en segundos (o escriba 'salir' para terminar):") // valor dado por el usuario
+
+    if (entrada === null || entrada.toLowerCase() === "salir") { // condicion para canselar o salir de la consola 
+        console.log("🚪 Saliste del sistema manualmente.") // imprime el mensaje si se cancelo
+        break // detiene el bucle 
+    }
+
+    let tiempo = parseInt(entrada) // declaro la varible tiempo y almaceno el valor de entrada convirtiendola ha numero entero
+
+    if (isNaN(tiempo) || tiempo <= 0) { // el valor ingresado debe ser numero o numero mayor que cero
+        console.log("❌ Entrada invalida. Intente nuevamente con un numero mayor a 0.") // imprime si no es valido 
+        continue // si es falso salta el bucle
+    }
+
+
+    totalDuchas++ // inicia el contador de duchas 
+    tiempoTotal += tiempo // suma tiempoTotal a tiempo
+
+    if (tiempo <= 180) { // pregunta si tiempo es menor a 180 segundos
+        console.log("✅ Ahorro registrado. ¡Buen trabajo!") // imprime el mensaje si es true
+    } else {
+        console.log("⚠️ Advertencia: El tiempo excede los 180 segundos.") // si no imprime el mensaje
+        advertencias++ // si no se cumple incrementa advertencias
+    }
+
+    console.log(`Advertencias actuales: ${advertencias}/${maxAdvertencias}`) // imprime el numero de advertencias
+
+} while (advertencias < maxAdvertencias) // Repetimos el bucle mientras las advertencias sean menores que el máximo permitido
+
+console.log("🚿 Sistema detenido por exceder el numero de advertencias.") // si supera lo permitido imprime esta linea 
+console.log(`🧮 Estadisticas finales:`) // luego imprime esta linea
+console.log(`- Total de duchas: ${totalDuchas}`) // imprime el total de las duchas 
+console.log(`- Tiempo total: ${tiempoTotal} segundos`) // imprime el tiempo total de duchas 
+console.log(`- Promedio por ducha: ${(tiempoTotal / totalDuchas).toFixed(2)} segundos`) /*imprime el promedio de duchas (toFixed() lo que 
+hace esta funcion es darme solo dos numeros decimales a la division)*/
+
+    </script>
+
+</body>
+</html>
+
+
